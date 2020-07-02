@@ -14,12 +14,11 @@ public class PlayerController : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
 
-        float Fire = Input.GetAxis("Fire1");
 
         rigidibody.AddForce(new Vector3(xAxis, 0, yAxis) * m_Speed);
 
 
-        if (Fire > 0) Die();
+  
 
 
         //if (Input.GetKey(KeyCode.LeftArrow))

@@ -23,7 +23,10 @@ public class Bullet : MonoBehaviour
         m_DestroyCooltime = m_DestroyCooltime- Time.deltaTime;
 
         if (m_DestroyCooltime <= 0)
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+
+        
+        
 
     }
 
