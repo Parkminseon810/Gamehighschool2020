@@ -7,18 +7,19 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //m_Velocity = tranceform.forward;
     }
+    public Vector3 m_Velocity;
 
     public float m_speed = 5f;
+
     public float m_DestroyCooltime = 5f;
     // Update is called once per frame
     void Update()
     {
         Rigidbody rigidibody = /*gameObject*/GetComponent<Rigidbody>();
 
-
-        rigidibody.AddForce(transform.forward * m_speed);
+        rigidibody.AddForce(m_Velocity * m_speed);
 
         m_DestroyCooltime = m_DestroyCooltime- Time.deltaTime;
 
