@@ -4,53 +4,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float m_Speed = 15f;
-    // Update is called once per frame
     
+
+    public float m_Speed = 25f;
+    // Update is called once per frame
     void Update()
     {
-        Rigidbody rigidibody = /*gameObject*/GetComponent<Rigidbody>();
+        //주석 : 설명 필요없는 스크립트를 임시적으로 비활성화하기 위해서 사용
+        /* 주석 */
+        Rigidbody rigidbody = /*gameObject.*/GetComponent<Rigidbody>();
 
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
 
-
-        rigidibody.AddForce(new Vector3(xAxis, 0, yAxis) * m_Speed);
-
-
-  
+        rigidbody.AddForce(new Vector3(xAxis, 0, yAxis) * m_Speed);
 
 
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    //transform.position += Vector3.left * m_Speed * Time.deltaTime;
-        //
-        //    rigidibody.AddForce(Vector3.left * m_Speed);
-        //}
-        //else if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //   rigidibody.AddForce(Vector3. right * m_Speed);
-        //}
-        //else if (Input.GetKey(KeyCode.UpArrow))
-        //{
-        //    rigidibody.AddForce(Vector3.forward * m_Speed);
-        //}
-        //else if (Input.GetKey(KeyCode.DownArrow))
-        //{
-        //    rigidibody.AddForce(Vector3.back * m_Speed);
-        //}
+        //정답
+        //float fireAxis = Input.GetAxis("Fire1");
 
-
-        //Geaxis fire 사망처리 해보자.
-
-
-        //if (Input.GetKeyDown(KeyCode.Space))
+        //if (fireAxis > 0.95f)
         //    Die();
     }
+
+    public GameManager m_GameManager;
 
     public void Die()
     {
         Debug.Log("사망");
-        gameObject.SetActive(false);
+        //gameobject.SetActive(false);
+        m_GameManager.GameOver();
     }
-}   
+}
