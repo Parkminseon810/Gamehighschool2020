@@ -25,6 +25,7 @@ public class PlayerController_Dungeon : MonoBehaviour
 
    public void Die()
     {
-        
+        GameManager_Dungeon gameManager = FindObjectOfType<GameManager_Dungeon>();
+        gameManager.ReturnTostartPoint();
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Trap : MonoBehaviour
-{
 
+    public class Trap : MonoBehaviour
+    {
+    public UnityEvent m_OnEventer;
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("트리거 안에 어떤 collider나 Trigger가 들어갔을때");
@@ -12,9 +14,9 @@ public class Trap : MonoBehaviour
         {
             var player = other.attachedRigidbody.GetComponent<PlayerController_Dungeon>();
             if (player != null)
-                player.Die();
+                m_OnEventer.Invoke();
         }
-        
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -28,3 +30,6 @@ public class Trap : MonoBehaviour
     }
 
 }
+
+
+
