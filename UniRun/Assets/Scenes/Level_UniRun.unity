@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1029773927}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,10 +324,11 @@ GameObject:
   - component: {fileID: 1871523489}
   - component: {fileID: 1871523488}
   - component: {fileID: 1871523491}
+  - component: {fileID: 1871523493}
   - component: {fileID: 1871523492}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,8 +438,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1871523492
-BoxCollider2D:
+--- !u!58 &1871523492
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -450,16 +451,23 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18691587, y: 0.06230542}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.40654206, y: 0.4688473}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.7}
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Radius: 0.1
+--- !u!114 &1871523493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871523487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45f23eb248332045bc37a17e7d7e58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 1871523488}
+  m_Rigidbody2D: {fileID: 1871523491}
+  m_IsGround: 0
+  m_IsDead: 0
+  m_JumpCount: 0
