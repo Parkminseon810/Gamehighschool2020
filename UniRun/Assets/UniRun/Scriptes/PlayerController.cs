@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
        
         m_Animator.SetBool("IsGround", m_IsGround);
 
-        if (Input.GetKeyDown(KeyCode.Space)&& m_JumpCount<2)
+        if (Input.GetKeyDown(KeyCode.Space)&& m_JumpCount<3)
         {
             m_Rigidbody2D.velocity
                 = Vector2.zero;
@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
             m_Animator.SetBool("IsDead", m_IsDead);
 
             GameManager.Instance.OnPlayerDead();
+
+            m_AudioSource.clip = m_Die;
+            m_AudioSource.Play();
         }
 
     }

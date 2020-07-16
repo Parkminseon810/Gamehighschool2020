@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
 
         m_IsGameOver = true;
         m_GameOverUI.SetActive(true);
+
+        ScrollingObject[] scrollingObjects = FindObjectsOfType<ScrollingObject>();
+        foreach (var scrollingObject in scrollingObjects)
+            scrollingObject.enabled = false;
+
+        FindObjectOfType<PlatFormSpawner>().enabled = false;
     }
 
     public void OnAddScore()
@@ -39,5 +46,13 @@ public class GameManager : MonoBehaviour
         m_ScoreUI.text
             = string.Format("SCORE : {0}", m_Score);
 
+    }
+
+    private void Update()
+    {
+       if(m_IsGameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Level_UniRun");
+        }
     }
 }

@@ -14,7 +14,9 @@ public class Background : MonoBehaviour
 
     void Update()
     {
-        
+
+        var collider = GetComponent<BoxCollider2D>();
+        float width = collider.size.x;
 
         if (transform.position.x <= -width)
         {
