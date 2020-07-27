@@ -38,6 +38,13 @@ public class Player : MonoBehaviour
             m_AttackCooldown = m_AttackDelay;
         }
         m_AttackCooldown -= Time.deltaTime;
+    }
+    
 
+
+    public void Die()
+    {
+        GameManager.instance.OnPlayerDie();
+        Destroy(gameObject);
     }
 }
