@@ -18,7 +18,7 @@ public class PlayerController_Dungeon : MonoBehaviour
 
         Vector3 velocity = (new Vector3(xAxis, 0, yAxis) .normalized * d_Speed);
         //리지드 바디를 이용한 이동 처리
-        d_Rigidbody.velocity = velocity;
+        d_Rigidbody.velocity = velocity;    
 
 
     }
