@@ -34,12 +34,11 @@ public class PlayerShooter : MonoBehaviour {
 
         if (playerInput.reload)
         {
-           if (gun.Reload())
+            if (gun.Reload())
             {
                 playerAnimator.SetTrigger("Reload");
             }
         }
-            
     }
 
     // 탄약 UI 갱신
@@ -52,24 +51,26 @@ public class PlayerShooter : MonoBehaviour {
     }
 
     // 애니메이터의 IK 갱신
-    private void OnAnimatorIK(int layerIndex)
+    private void OnAnimatorIK(int layerIndex) 
     {
-        gunPivot.position = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);
+        gunPivot.position 
+            = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);
 
         playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
-        playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+        playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
 
-        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandMount.position);
-        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandMount.position);
+        playerAnimator.SetIKPosition(
+            AvatarIKGoal.LeftHand, leftHandMount.position);
+        playerAnimator.SetIKRotation(
+            AvatarIKGoal.LeftHand, leftHandMount.rotation);
+
 
         playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
-        playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+        playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
 
-
-
-        playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandMount.position);
-        playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandMount.position);
-
-
+        playerAnimator.SetIKPosition(
+            AvatarIKGoal.RightHand, rightHandMount.position);
+        playerAnimator.SetIKRotation(
+            AvatarIKGoal.RightHand, rightHandMount.rotation);
     }
 }

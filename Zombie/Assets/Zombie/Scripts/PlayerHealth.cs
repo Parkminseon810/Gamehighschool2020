@@ -3,7 +3,7 @@ using UnityEngine.UI; // UI 관련 코드
 
 // 플레이어 캐릭터의 생명체로서의 동작을 담당
 public class PlayerHealth : LivingEntity {
-    public Image healthSlider; //체력을 표시할 UI 슬라이더
+    public Image healthSlider; // 체력을 표시할 UI 슬라이더
     //public Slider healthSlider; // 체력을 표시할 UI 슬라이더
 
     public AudioClip deathClip; // 사망 소리
@@ -24,7 +24,6 @@ public class PlayerHealth : LivingEntity {
         playerAnimator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         playerShooter = GetComponent<PlayerShooter>();
-
     }
 
     protected override void OnEnable() {
@@ -33,11 +32,8 @@ public class PlayerHealth : LivingEntity {
 
         RefreshHP();
 
-        RefreshHP();
-
         playerMovement.enabled = true;
         playerShooter.enabled = true;
-
     }
 
     // 체력 회복
@@ -57,7 +53,6 @@ public class PlayerHealth : LivingEntity {
         effect.transform.position = hitPoint;
         effect.transform.forward = hitDirection;
         effect.GetComponent<ParticleSystem>().Play();
-        RefreshHP();
 
         RefreshHP();
 
@@ -66,19 +61,14 @@ public class PlayerHealth : LivingEntity {
             playerAudioPlayer.clip = hitClip;
             playerAudioPlayer.Play();
         }
-
-      
-       
     }
 
     // 사망 처리
     public override void Die() {
         // LivingEntity의 Die() 실행(사망 적용)
         base.Die();
-
         playerAudioPlayer.clip = deathClip;
         playerAudioPlayer.Play();
-
         playerAnimator.SetTrigger("Die");
 
         playerMovement.enabled = false;
@@ -91,16 +81,16 @@ public class PlayerHealth : LivingEntity {
 
     private void RefreshHP()
     {
-        healthSlider.fillAmount
+        healthSlider.fillAmount 
             = health / startingHealth;
     }
 
-    [ContextMenu("TestHit")]
 
+    [ContextMenu("TestHit")]
     public void TestHit()
     {
-        OnDamage(10,
-            transform.position,
-            transform.position);
+        OnDamage(10, 
+            transform.position + Vector3.up, 
+            transform.forward);
     }
 }

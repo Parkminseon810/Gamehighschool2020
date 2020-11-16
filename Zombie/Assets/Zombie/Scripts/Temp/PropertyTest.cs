@@ -28,5 +28,4 @@ public class PropertyTest : MonoBehaviour
             m_InputC = value - 10;
         }
     }
-
 }

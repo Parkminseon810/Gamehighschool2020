@@ -23,12 +23,9 @@ public class PlayerMovement : MonoBehaviour {
 
         Move();
 
-
         Rotate();
-        
-       
-        playerAnimator.SetFloat("Move", playerInput.move);
 
+        playerAnimator.SetFloat("Move", playerInput.move);
     }
 
     // 입력값에 따라 캐릭터를 앞뒤로 움직임
@@ -37,15 +34,15 @@ public class PlayerMovement : MonoBehaviour {
         //앞뒤 움직임
         transform.position
             += transform.forward
-            * moveSpeed * Time.fixedDeltaTime
-            * playerInput.move;
+               * moveSpeed * Time.fixedDeltaTime
+               * playerInput.move;
     }
 
     // 입력값에 따라 캐릭터를 좌우로 회전
     private void Rotate() {
-
-        //좌우 회전
-        transform.Rotate(0, rotateSpeed * Time.fixedDeltaTime * playerInput.rotate, 0);
-
+        //좌 회전
+        transform.Rotate(0,
+            rotateSpeed * Time.fixedDeltaTime * playerInput.rotate,
+            0);
     }
 }
