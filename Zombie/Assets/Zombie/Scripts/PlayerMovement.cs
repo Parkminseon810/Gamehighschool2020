@@ -25,11 +25,45 @@ public class PlayerMovement : MonoBehaviour {
 
         Rotate();
 
-        playerAnimator.SetFloat("Move", playerInput.move);
+        playerAnimator.SetFloat("Move", playerInput.move + playerInput.rotate);
     }
 
     // 입력값에 따라 캐릭터를 앞뒤로 움직임
     private void Move() {
+        var forward = Camera.main.transform.forward;
+            forward.y = 0;
+        forward.Normalize();
+
+
+        var right = Camera.main.transform.right;
+        right.y = 0;
+        right.Normalize();
+
+        var rigidboty = GetComponent<Rigidbody>();
+
+        Vector3 v = new Vector3();
+
+        v += forward
+            * moveSpeed
+            * playerInput.move;
+
+        v += right
+            * moveSpeed
+            * playerInput.rotate;
+
+        rigidboty.velocity = v;
+        return;
+
+        //플레이어는 앞뒤로 움직인다.
+        transform.position += forward
+            * moveSpeed * Time.fixedDeltaTime
+            * playerInput.move;
+
+        //플레이어는 좌우로 움직인다.
+        transform.position += right
+            * moveSpeed * Time.fixedDeltaTime
+            * playerInput.rotate;
+        
 
         //앞뒤 움직임
         transform.position
@@ -47,6 +81,10 @@ public class PlayerMovement : MonoBehaviour {
         plane.Raycast(ray, out enter);
         var point = ray.GetPoint(enter);
         transform.LookAt(point);
+        var eulerAngels = transform.eulerAngles;
+        eulerAngels.x = 0;
+        eulerAngels.z = 0;
+        transform.eulerAngles = eulerAngels;
 
         return;
         //hack;
